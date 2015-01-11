@@ -67,7 +67,7 @@ public class QuantizerCacheTest {
 	}
 
 	@Test(timeout = 2_000)
-	public void testJumpIn() throws Exception {
+	public void testWithDifferentCompressionFactors() throws Exception {
 		IndexedCollection<Item> items = createCache();
 
 		final int CREATED_START = 50000;
