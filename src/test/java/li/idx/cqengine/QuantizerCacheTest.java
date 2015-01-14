@@ -48,7 +48,7 @@ public class QuantizerCacheTest {
 		return new Object[]{arg};
 	}
 
-	public IndexedCollection<Item> createCache() {
+	public static IndexedCollection<Item> createCache(int totalItems, int compressionFactor) {
 		IndexedCollection<Item> items = CQEngine.newInstance();
 
 		items.addIndex(UniqueIndex.onAttribute(Item.ID));
@@ -63,12 +63,12 @@ public class QuantizerCacheTest {
 			items.addIndex(NavigableIndex.onAttribute(Item.CREATED));
 		}
 
-		return fillCache(items, 150_000);
+		return fillCache(items, totalItems);
 	}
 
 	@Test(timeout = 2_000)
 	public void testWithDifferentCompressionFactors() throws Exception {
-		IndexedCollection<Item> items = createCache();
+		IndexedCollection<Item> items = createCache(150_000, compressionFactor);
 
 		final int CREATED_START = 50000;
 		final int STEPS = 11;
